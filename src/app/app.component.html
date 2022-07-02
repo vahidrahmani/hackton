@@ -1,0 +1,161 @@
+<div class="payslip-container">
+  <div class="employee-description">
+    <div class="employee-name">
+      <div class="card">
+        <div class="card-body">
+          <span (click)="showName = !showName">name:</span>
+          <div *ngIf="showName">
+            <input type="text" class="form-control" [(ngModel)]="userName" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="employee-address">
+      <div class="card">
+        <span>Period</span>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="ernings.period"
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="employee-earnings">
+      <div class="earnings">
+        <div class="card mb-3" style="width: 300px">
+          <div class="card-header">Earnings</div>
+          <div class="card-body text-primary">
+            <p
+              class="card-text"
+              (click)="onItemClick('Regular pay', 'ReqularPay')"
+            >
+              Regular pay
+            </p>
+            <p
+              class="card-text"
+              (click)="onItemClick('overtime rate', 'OverTime')"
+            >
+              overtime rate
+            </p>
+            <p class="card-text" (click)="onItemClick('Vacation', 'Vacation')">
+              Vacation
+            </p>
+            <p class="card-text" (click)="onItemClick('Sick days', 'SickDay')">
+              Sick days
+            </p>
+            <p class="card-text" (click)="onItemClick('Holiday', 'Holiday')">
+              Holiday
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="earning-description" *ngIf="isEarningsClicked">
+        <div class="card mb-3" style="width: 200px">
+          <div class="card-header">{{ selectedItemType.name }}</div>
+          <div class="card-body text-primary">
+            <p class="card-text" (click)="showInput = !showInput">Hours</p>
+            <div *ngIf="showInput">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="ernings[selectedItemType.type].hour"
+              />
+            </div>
+            <p class="card-text" (click)="showInput = !showInput">Rate</p>
+            <div *ngIf="showInput">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="ernings[selectedItemType.type].rate"
+              />
+            </div>
+            <p class="card-text">
+              Amouunt :
+              {{
+                ernings[selectedItemType.type].hour *
+                  ernings[selectedItemType.type].rate || 0
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="employee-benefits">
+      <div class="benefits">
+        <div class="card mb-3" style="width: 300px">
+          <div class="card-header">Benefits</div>
+          <div class="card-body text-primary">
+            <p
+              class="card-text"
+              (click)="onItemClick('Insurance', 'Insurance')"
+            >
+              Insurance
+            </p>
+            <p
+              class="card-text"
+              (click)="onItemClick('Health program', 'Helth')"
+            >
+              Health program
+            </p>
+            <p
+              class="card-text"
+              (click)="onItemClick('Educational program', 'Education')"
+            >
+              Educational program
+            </p>
+
+            <p class="card-text" (click)="onItemClick('Paid bills', 'Bills')">
+              Paid bills
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-description" *ngIf="isBenefitsClicked">
+        <div class="card mb-3" style="width: 200px">
+          <div class="card-header">{{ benefitItems }}</div>
+          <div class="card-body text-primary">
+            <p class="card-text">Hours</p>
+            <p class="card-text">Rate</p>
+            <p class="card-text">Amouunt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="net-pay">
+    <div class="card" style="width: 200px">
+      <div class="card-body">Net pay</div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="button" class="btn btn-primary" (click)="onSave()">
+      Save
+    </button>
+  </div>
+</div>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">amount</th>
+        <th scope="col">department</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of hackTonItems; let index = index">
+        <th scope="row">{{ index }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.amount }}</td>
+        <td>alefba</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

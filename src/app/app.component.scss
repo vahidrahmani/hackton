@@ -1,0 +1,31 @@
+.payslip-container {
+  display: grid;
+  grid-template-rows: min-content 35% 35% min-content min-content;
+  row-gap: 10px;
+  justify-content: center;
+
+  .employee-description {
+    display: flex;
+    column-gap: 20px;
+
+    .employee-name {
+      width: 300px;
+    }
+  }
+  .employee-earnings {
+    display: flex;
+    column-gap: 50px;
+
+    .earnings {
+      margin-bottom: 70px;
+    }
+  }
+  .employee-benefits {
+    display: flex;
+    column-gap: 50px;
+  }
+
+  .buttons {
+    display: flex;
+  }
+}
